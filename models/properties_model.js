@@ -1,16 +1,20 @@
 const mongoose = require("mongoose");
 const PropertySchema = mongoose.Schema(
   {
-    propertyImg: {
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    img: {
       type: String,
     },
-    propertyName: {
+    name: {
       type: String,
     },
-    propertyPrice: {
+    price: {
       type: Number,
     },
-    propertyDesc: {
+    desc: {
       type: String,
     },
   },
@@ -18,4 +22,4 @@ const PropertySchema = mongoose.Schema(
     timestamps: true,
   }
 );
-module.exports = mongoose.model("property", PropertySchema);
+module.exports = mongoose.model("Property", PropertySchema);

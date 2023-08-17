@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { requireAuth } = require("../middlewares/auth_middleware");
 
 // conroller functions here
 const {
@@ -7,6 +8,9 @@ const {
   get_properties,
   get_property,
 } = require("../controllers/properties_controller");
+
+// router authorization middleware
+router.use(requireAuth);
 
 // routes here...
 

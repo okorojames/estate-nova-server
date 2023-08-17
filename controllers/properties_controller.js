@@ -3,15 +3,18 @@ const PropertySchema = require("../models/properties_model");
 
 // adding new property
 const add_property = async (req, res) => {
-  const { propertyName, propertyPrice, propertyDesc } = req.body;
-  if (!propertyName || !propertyPrice || !propertyDesc) {
+  const { name, price, desc, img } = req.body;
+  const user_id = req.user._id;
+  if (!name || !price || !desc || !img) {
     return res.status(400).json({ msg: "please fill in all details!" });
   }
   try {
     const property = new PropertySchema({
-      propertyName,
-      propertyPrice,
-      propertyDesc,
+      name,
+      price,
+      img,
+      desc,
+      user_id,
     });
     await property.save();
     return res.status(201).json(property);
