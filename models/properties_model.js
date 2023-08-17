@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const PropertySchema = mongoose.Schema(
   {
+    propertyImg: {
+      type: String,
+    },
     propertyName: {
       type: String,
     },
