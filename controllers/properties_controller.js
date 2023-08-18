@@ -27,11 +27,27 @@ const add_property = async (req, res) => {
 // getting all properties
 const get_properties = async (req, res) => {
   try {
-    const properties = await PropertySchema.find().sort({ createdAt: -1 });
+    const properties = await PropertySchema.find().sort({
+      createdAt: -1,
+    });
     return res.status(200).json(properties);
   } catch (err) {
     console.log(err);
     return res.status(500).json({ err: err });
+  }
+};
+
+// getting personally added properties
+const getMyProperties = async (req, res) => {
+  const user_id = req.user._id;
+  try {
+    const properties = await PropertySchema.find({ user_id }).sort({
+      createdAt: -1,
+    });
+    return res.status(200).json(properties);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ msg: err });
   }
 };
 
@@ -54,4 +70,9 @@ const get_property = async (req, res) => {
 };
 
 // exporting functions to routes
-module.exports = { add_property, get_properties, get_property };
+module.exports = {
+  add_property,
+  get_properties,
+  get_property,
+  getMyProperties,
+};

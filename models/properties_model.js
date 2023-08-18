@@ -6,7 +6,8 @@ const PropertySchema = mongoose.Schema(
       ref: "User",
     },
     img: {
-      type: String,
+      type: [String],
+      required: [true, "images of properties required"],
     },
     name: {
       type: String,
