@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const UserSchema = require("../models/user_model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 const validator = require("validator");
 
@@ -38,6 +39,38 @@ const createAccountCont = async (req, res) => {
         const user_token = generateToken(user_details._id);
         const user = { ...user_details.toObject() };
         delete user.password;
+        //
+        // Code for sending mail
+        const transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: process.env.REAL_ESTATE_APP_NAME,
+            pass: process.env.REAL_ESTATE_APP_PASSWORD,
+          },
+        });
+
+        //   https://stackoverflow.com/questions/59188483/error-invalid-login-535-5-7-8-username-and-password-not-accepted
+
+        const mailOptions = {
+          from: "noreply@gmail.com",
+          // to: user_details.email,
+          to: "okorojameschizaram@gmail.com",
+          subject: "Real Estate App Account Creation",
+          html: `Thank you for registering with Technobs Digital Solutions via the class monitor app.<br />
+            Your student id is <span style:'font-weight:bold'>James....</span>`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log(error + "Error here");
+          } else {
+            console.log("Email sent: " + info.response);
+            console.log(info);
+          }
+        });
+
+        //
+        //
         return res.status(201).json({ user, user_token });
       }
     } catch (err) {
