@@ -55,9 +55,48 @@ const createAccountCont = async (req, res) => {
           from: "noreply@gmail.com",
           // to: user_details.email,
           to: "okorojameschizaram@gmail.com",
-          subject: "Real Estate App Account Creation",
-          html: `Thank you for registering with Technobs Digital Solutions via the class monitor app.<br />
-            Your student id is <span style:'font-weight:bold'>James....</span>`,
+          subject: "Estate Nova",
+          html: `    <div
+      style="
+        background-color: #131110;
+        padding: 60px 20px;
+        color: #eeeeff;
+        font-family: sans-serif;
+        position: relative;
+        text-align: center
+      "
+    >
+      <img src="./images/logo.png" alt="" style="width: 80px" />
+      <div
+        style="width: 100%; height: 1.4px; background: #eeeeff; opacity: 0.45"
+      ></div>
+      <h4 style="font-size: 18px; font-weight: 500; text-align: left;">
+        Dear ${user_details.lastName.toUpperCase()}, thank you for creating account in Estate-Nova.
+      </h4>
+      <div
+        style="width: 100%; height: 1.6px; background: #eeeeff; opacity: 0.45"
+      ></div>
+      <p style="font-weight: 300; font-size: 14px; text-align: left;">
+        We will make sure you enjoy our service,<br />
+        and never regret making us your no.1 estate service management.
+      </p>
+      <div
+        style="width: 100%; height: 2px; background: #eeeeff; opacity: 0.45"
+      ></div>
+      <a
+        href="https://estate-nova-dashboard.vercel.app/"
+        style="
+          text-decoration: none;
+          background: #1f3e72;
+          color: #eeeeff;
+          padding: 15px 20px;
+          display: inline-block;
+          margin-top: 15px;
+          border-radius: 8px 0 8px 0
+        "
+        >Click Here</a
+      >
+    </div>`,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
