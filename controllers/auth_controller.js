@@ -66,7 +66,7 @@ const createAccountCont = async (req, res) => {
         text-align: center
       "
     >
-      <img src="./images/logo.png" alt="" style="width: 80px" />
+      <img src="images/logo.png" alt="" style="width: 90px" />
       <div
         style="width: 100%; height: 1.4px; background: #eeeeff; opacity: 0.45"
       ></div>
