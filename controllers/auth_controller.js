@@ -66,7 +66,12 @@ const createAccountCont = async (req, res) => {
         text-align: center
       "
     >
-      <img src="images/logo.png" alt="" style="width: 90px" />
+      <img
+        src="https://res.cloudinary.com/dcwpjyezj/image/upload/v1692779850/logo_fj2xc3.png"
+        alt=""
+        width="70"
+        style="margin-bottom: 10px"
+      />
       <div
         style="width: 100%; height: 1.4px; background: #eeeeff; opacity: 0.45"
       ></div>
