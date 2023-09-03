@@ -18,6 +18,9 @@ const PropertySchema = mongoose.Schema(
     desc: {
       type: String,
     },
+    rating: {
+      type: String,
+    },
   },
   {
     timestamps: true,

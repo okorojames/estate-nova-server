@@ -3,9 +3,9 @@ const PropertySchema = require("../models/properties_model");
 
 // adding new property
 const add_property = async (req, res) => {
-  const { name, price, desc, img } = req.body;
+  const { name, price, desc, img, rating } = req.body;
   const user_id = req.user._id;
-  if (!name || !price || !desc || !img) {
+  if (!name || !price || !desc || !img || !rating) {
     return res.status(400).json({ msg: "please fill in all details!" });
   }
   try {
@@ -15,6 +15,7 @@ const add_property = async (req, res) => {
       img,
       desc,
       user_id,
+      rating,
     });
     await property.save();
     return res.status(201).json(property);
@@ -27,9 +28,13 @@ const add_property = async (req, res) => {
 // getting all properties
 const get_properties = async (req, res) => {
   try {
-    const properties = await PropertySchema.find().sort({
-      createdAt: -1,
-    });
+    const { page = 1, limit = 12 } = req.query;
+    const properties = await PropertySchema.find()
+      .sort({
+        createdAt: -1,
+      })
+      .limit(limit * 1)
+      .skip((page - 1) * limit);
     return res.status(200).json(properties);
   } catch (err) {
     console.log(err);

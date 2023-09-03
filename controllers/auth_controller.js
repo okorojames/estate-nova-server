@@ -53,8 +53,7 @@ const createAccountCont = async (req, res) => {
 
         const mailOptions = {
           from: "noreply@gmail.com",
-          // to: user_details.email,
-          to: "okorojameschizaram@gmail.com",
+          to: user_details.email,
           subject: "Estate Nova",
           html: `    <div
       style="
@@ -88,19 +87,45 @@ const createAccountCont = async (req, res) => {
       <div
         style="width: 100%; height: 2px; background: #eeeeff; opacity: 0.45"
       ></div>
-      <a
-        href="https://estate-nova-dashboard.vercel.app/"
-        style="
+         <a
+      href="https://estate-nova-dashboard.vercel.app/"
+      style="
           text-decoration: none;
           background: #1f3e72;
           color: #eeeeff;
           padding: 15px 20px;
           display: inline-block;
-          margin-top: 15px;
-          border-radius: 8px 0 8px 0
+          margin-top: 25px;
+          margin-bottom: 15px;
+          border-radius: 8px 0 8px 0;
         "
         >Click Here</a
+        >
+        <div
+          style="width: 100%; height: 2px; background: #eeeeff; opacity: 0.05"
+        ></div>
+      <p style="font-weight: 300; font-size: 14px">Contact dev below @</p>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+          margin-top: 20px;
+        "
       >
+        <a href="https://www.twitter.com/okorojames_" style="text-decoration: none; color: #bcc5d5; border-bottom: 2px solid #1f3e72; font-size: 11px;" >
+          twitter @ Okoro James
+        </a>
+        <div style="width: 2px; height: 15px; background: #eeeeff; margin: 0 8px;" ></div>
+        <a href="https://www.github.com/okorojames" style="text-decoration: none; color: #bcc5d5; border-bottom: 2px solid #1f3e72; font-size: 11px;" >
+         github @ Okoro James
+        </a>
+       <div style="width: 2.1px; height: 15px; background: #eeeeff; margin: 0 8px;" ></div>
+        <a href="https://okorojames.netlify.app" style="text-decoration: none; color: #bcc5d5; border-bottom: 2px solid #1f3e72; font-size: 11px;" >
+         Portfolio
+        </a>
+      </div>
     </div>`,
         };
 
